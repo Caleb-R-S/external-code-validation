@@ -1,7 +1,8 @@
-# Placeholder
-# Put Step Functions task here
-from tasks.taskinterface import ValidationTask, MissingLambdaInPipelineException
-from tasks.validation_tools import StepFunction, get_tf_module, is_step_function
+import sys
+sys.path.append('../../commons')
+
+from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException
+from commons.validation_tools import StepFunction, get_tf_module, is_step_function
 
 class StepFunctionsTask(ValidationTask):
 

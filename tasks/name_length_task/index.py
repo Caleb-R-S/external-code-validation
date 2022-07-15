@@ -1,7 +1,8 @@
-# Placeholder
-# Locals task goes here
-from tasks.taskinterface import ValidationTask, UnableToParseYmlException, LamdaAWSNameTooLongException
-from tasks.validation_tools import generate_location
+import sys
+sys.path.append('../../commons')
+
+from commons.taskinterface import ValidationTask, UnableToParseYmlException, LamdaAWSNameTooLongException
+from commons.validation_tools import generate_location
 import os
 class NameLengthTask(ValidationTask):
 

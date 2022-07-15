@@ -1,8 +1,8 @@
-# Placeholder
-# GLP (Group Lambda Packager) task goes here:
+import sys
+sys.path.append('../../commons')
 
-from tasks.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
-from tasks.validation_tools import generate_location
+from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
+from commons.validation_tools import generate_location
 import yaml
 import os
 class GLPTask(ValidationTask):

@@ -1,9 +1,8 @@
-# Placeholder
-# Unit test task goes here
+import sys
+sys.path.append('../../commons')
 
-# Locals task goes here
-from tasks.taskinterface import ValidationTask, MissingLambdaInPipelineException
-from tasks.validation_tools import generate_location
+from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException
+from commons.validation_tools import generate_location
 import os
 class UnitTestTask(ValidationTask):
 

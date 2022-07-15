@@ -1,8 +1,9 @@
-# Placeholder
-# Locals task goes here
-from tasks.taskinterface import ValidationTask, UnableToParseYmlException, MissingLambdaInPipelineException
+import sys
+sys.path.append('../../commons')
+
+from commons.taskinterface import ValidationTask, UnableToParseYmlException, MissingLambdaInPipelineException
+from commons.validation_tools import generate_location
 import yaml
-from tasks.validation_tools import generate_location
 import os
 
 class LambdaInLocalFilesTask(ValidationTask):

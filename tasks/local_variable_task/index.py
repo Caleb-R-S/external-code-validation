@@ -1,7 +1,8 @@
-# Placeholder
+import sys
+sys.path.append('../../commons')
 
-from tasks.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
-from tasks.validation_tools import generate_location
+from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
+from commons.validation_tools import generate_location
 import os
 
 

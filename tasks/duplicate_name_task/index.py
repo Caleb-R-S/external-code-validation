@@ -1,6 +1,8 @@
-# Placeholder
-from tasks.taskinterface import ValidationTask
-from tasks.validation_tools import generate_location
+import sys
+sys.path.append('../../commons')
+
+from commons.taskinterface import ValidationTask
+from commons.validation_tools import generate_location
 import os
 import yaml
 import hcl

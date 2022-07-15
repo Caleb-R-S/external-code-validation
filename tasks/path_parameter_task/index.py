@@ -1,7 +1,9 @@
-# Placeholder
-from tasks.taskinterface import ValidationTask
-from tasks.validation_tools import get_paths_to_lambdas_from_locals_file, make_module_name_to_lambda_path_dict, get_lambda_handler_from_file
-from tasks.validation_tools import generate_location
+import sys
+sys.path.append('../../commons')
+
+from commons.taskinterface import ValidationTask
+from commons.validation_tools import get_paths_to_lambdas_from_locals_file, make_module_name_to_lambda_path_dict, get_lambda_handler_from_file
+from commons.validation_tools import generate_location
 import re
 import os
 import hcl

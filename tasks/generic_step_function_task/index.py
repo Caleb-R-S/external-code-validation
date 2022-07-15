@@ -1,7 +1,8 @@
-# Placeholder
+import sys
+sys.path.append('../../commons')
 
-from tasks.taskinterface import ValidationTask, Warning
-from tasks.validation_tools import StepFunction
+from commons.taskinterface import ValidationTask, Warning
+from commons.validation_tools import StepFunction
 import re 
 
 class UnusedPermissions(Warning): pass
