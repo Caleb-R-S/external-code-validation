@@ -31,7 +31,7 @@ def main():
         # ApiGatewayTask(),
         # EnvironmentVariableTask(),
         # LocalVarTask(),
-        # DuplicateNameTask(),
+        DuplicateNameTask(),
         # UnusedStepFunctionPermissionsTask(),
         # GenericStepFunctionTask(),
     ]
