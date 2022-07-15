@@ -1,0 +1,32 @@
+rules:
+  modules:
+    - source: "git::https://git.churchofjesuschrist.org/scm/cp/cloud-services.git//AWS/ApiGateway/simple-rest-lambda/terraform?ref=api-gateway-simple-rest-lambda-v1.3.2"
+      props:
+        - "name"
+    - source: "./api-to-step-function"
+      props:
+        - "sqs_queue_name"
+        - "step_function_name"
+        - "sqs_dead_letter_queue_name"
+        - "api_to_sqs_function_name"
+    - source: "git::https://git.churchofjesuschrist.org/scm/cp/cloud-services.git//AWS/S3/terraformV1/m1?ref=s3-v1.4.3"
+      props: 
+        - "s3bucketname"
+    - source: "git::https://git.churchofjesuschrist.org/scm/cp/cloud-services.git//AWS/DynamoDB/terraform?ref=dynamodb-v1.3.2"
+      props:
+        - "name"
+    - source: "./error-logging-lambda-sqs"
+      props:
+        - "error_sqs_queue_name"
+        - "dead_letter_sqs_queue_name"
+        - "lambda_name"
+    - source: "git::https://git.churchofjesuschrist.org/scm/cp/cloud-services.git//AWS/Lambda/terraform?ref=lambda-v1.3.6"
+      props:
+        - "function_name"
+    - source: "./step-function-subroutine"
+      props:
+        - "step_function_name"
+  resources:
+    - type: "aws_iam_policy"
+      props:
+        - "name"

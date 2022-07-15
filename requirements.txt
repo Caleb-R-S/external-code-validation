@@ -1,0 +1,3 @@
+pyyaml==5.4.1
+pathlib2==2.3.6
+pyhcl==0.4.4

@@ -1,0 +1,5 @@
+rules:
+  - source: "./api-to-step-function"
+    variable_name: "step_function_definition"
+  - source: "./step-function-subroutine"
+    variable_name: "step_function_definition"
