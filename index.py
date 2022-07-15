@@ -9,7 +9,7 @@ from tasks.check_json_task.index import CheckJsonTask
 # from tasks.api_gateway_task.index import ApiGatewayTask
 # from tasks.environment_variable_task.index import EnvironmentVariableTask
 # from tasks.local_variable_task.index import LocalVarTask
-# from tasks.duplicate_name_task.index import DuplicateNameTask
+from tasks.duplicate_name_task.index import DuplicateNameTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
 # from tasks.generic_step_function_task.index import GenericStepFunctionTask
 from commons.taskinterface import Warning
