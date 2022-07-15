@@ -1,17 +1,17 @@
 from asyncio import tasks
-from tasks.glp_task.index import GLPTask
+# from tasks.glp_task.index import GLPTask
 from tasks.check_json_task.index import CheckJsonTask
-from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
-from tasks.step_functions_task.index import StepFunctionsTask
-from tasks.name_length_task.index import NameLengthTask
-from tasks.unit_test_task.index import UnitTestTask
-from tasks.path_parameter_task.index import PathParameterTask
-from tasks.api_gateway_task.index import ApiGatewayTask
-from tasks.environment_variable_task.index import EnvironmentVariableTask
-from tasks.local_variable_task.index import LocalVarTask
-from tasks.duplicate_name_task.index import DuplicateNameTask
-from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
-from tasks.generic_step_function_task.index import GenericStepFunctionTask
+# from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
+# from tasks.step_functions_task.index import StepFunctionsTask
+# from tasks.name_length_task.index import NameLengthTask
+# from tasks.unit_test_task.index import UnitTestTask
+# from tasks.path_parameter_task.index import PathParameterTask
+# from tasks.api_gateway_task.index import ApiGatewayTask
+# from tasks.environment_variable_task.index import EnvironmentVariableTask
+# from tasks.local_variable_task.index import LocalVarTask
+# from tasks.duplicate_name_task.index import DuplicateNameTask
+# from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
+# from tasks.generic_step_function_task.index import GenericStepFunctionTask
 from commons.taskinterface import Warning
 from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts
 
