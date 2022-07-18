@@ -13,7 +13,7 @@ def generate_location(index):
     return str(Path(__file__).parents[index])
 
 def get_main_yaml_vars():
-    with open(generate_location(2) + 'configs/main.yaml') as file:
+    with open(generate_location(2) + '/configs/main.yaml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict
 
