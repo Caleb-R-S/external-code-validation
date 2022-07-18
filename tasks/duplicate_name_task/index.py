@@ -48,7 +48,7 @@ class DuplicateNameTask(ValidationTask):
 
 
 def get_yaml_location():
-    with open('/external-code-validation/tasks/duplicate_name_task/location-of-configs.yml') as file:
+    with open('pipelines/external-code-validation/tasks/duplicate_name_task/location-of-configs.yml') as file:
         yaml_dict = yaml.safe_load(file)
         print(yaml_dict)
 
