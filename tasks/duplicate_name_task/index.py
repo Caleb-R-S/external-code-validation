@@ -48,7 +48,7 @@ class DuplicateNameTask(ValidationTask):
 
 
 def get_yaml_location():
-    with open('location-of-configs.yml') as file:
+    with open(os.getcwd() + 'location-of-configs.yml') as file:
         yaml_dict = yaml.safe_load(file)
         print(yaml_dict)
 
