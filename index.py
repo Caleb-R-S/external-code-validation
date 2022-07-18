@@ -13,12 +13,12 @@ from tasks.duplicate_name_task.index import DuplicateNameTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
 # from tasks.generic_step_function_task.index import GenericStepFunctionTask
 from commons.taskinterface import Warning
-from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts
+from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
 
 
 def main():
 
-    
+    print('\033[92m' + generate_location(0) + '\033[37m') 
 
     tasks = [
         CheckJsonTask(),
