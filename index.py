@@ -18,7 +18,7 @@ from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terra
 from commons.get_os_file_delimiter import get_os_file_delimiter
 
 def main():
-    print(get_os_file_delimiter())
+    # print(get_os_file_delimiter())
     print('\033[92m' + generate_location(3) + '\033[37m') 
 
     tasks = [
