@@ -47,11 +47,14 @@ class DuplicateNameTask(ValidationTask):
         return DuplicateNameException('Duplicate names.')
 
 
+def get_yaml_location():
+    with open('location-of-configs.yml') as file:
+        yaml_dict = yaml.safe_load(file)
+        print(yaml_dict)
+
 def get_rules():
-    print('\033[92m' + generate_location(0) + '\033[37m')
-    print('\033[92m' + generate_location(1) + '\033[37m')
-    print('\033[92m' + generate_location(2) + '\033[37m')
-    with open(generate_location(2) + '/validate-lambdas-in-pipelines/configs/duplicate-names.yml') as file:
+    get_yaml_location()
+    with open(generate_location(2) + 'pipelines/validate-lambdas-in-pipelines/configs/duplicate-names/yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict['rules']
 
