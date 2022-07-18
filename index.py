@@ -45,7 +45,6 @@ def main():
         'lambda_paths' : get_list_of_lambda_paths(),
         'terraform_dicts': get_dict_of_terraform_dicts()
     }
-    print(dependencies['terraform_dicts'])
 
     task_report = list(map(lambda current_task: current_task.perform_validation_task(dependencies), tasks))
 
