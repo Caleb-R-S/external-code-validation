@@ -6,7 +6,7 @@ from tasks.check_json_task.index import CheckJsonTask
 # from tasks.name_length_task.index import NameLengthTask
 # from tasks.unit_test_task.index import UnitTestTask
 # from tasks.path_parameter_task.index import PathParameterTask
-# from tasks.api_gateway_task.index import ApiGatewayTask
+from tasks.api_gateway_task.index import ApiGatewayTask
 # from tasks.environment_variable_task.index import EnvironmentVariableTask
 # from tasks.local_variable_task.index import LocalVarTask
 from tasks.duplicate_name_task.index import DuplicateNameTask
@@ -28,7 +28,7 @@ def main():
         # NameLengthTask(),
         # StepFunctionsTask(),
         # PathParameterTask(),
-        # ApiGatewayTask(),
+        ApiGatewayTask(),
         # EnvironmentVariableTask(),
         # LocalVarTask(),
         DuplicateNameTask(),
@@ -45,6 +45,7 @@ def main():
         'lambda_paths' : get_list_of_lambda_paths(),
         'terraform_dicts': get_dict_of_terraform_dicts()
     }
+    print(dependencies['terraform_dicts'])
 
     task_report = list(map(lambda current_task: current_task.perform_validation_task(dependencies), tasks))
 

@@ -9,6 +9,7 @@ class MissingLambdaARNException(Exception): pass
 
 
 class ApiGatewayTask(ValidationTask):
+    "app.terraform.io/ICS/apigateway-simple-rest-lambda/aws"
 
     def print_start_message(self):
         print('Check that all lambda_arns are used in routes in api-gateway.tf ...')
