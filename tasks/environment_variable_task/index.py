@@ -8,6 +8,7 @@ import re
 import os
 import hcl
 import glob
+import yaml
 
 
 class IncorrectlyConfiguredEnvironmentVariables(Exception): pass
@@ -180,6 +181,7 @@ def get_code_path_to_env_vars(lambda_paths):
     dictionary = {}
     for path in lambda_paths:
         env_vars = get_env_var_from_python_file(f'{generate_location(3)}/lambdas/{path}/index.py')
+        # TODO: his needs to be changed to source direct
         dictionary[f'lambdas/{path}/index.py'] = env_vars
     return dictionary
 
@@ -220,6 +222,5 @@ def get_env_vars_from_tf(hcl_dictionary):
 
     env_vars = set(env_vars_dict.keys())
     return env_vars
-
 
 

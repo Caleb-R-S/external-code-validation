@@ -5,17 +5,17 @@ import os
 import hcl
 import re
 import json
+import yaml
 
 class CouldNotFindOrReadFile(Exception): pass
 
 def generate_location(index):
     return str(Path(__file__).parents[index])
 
-def get_lambdas_directory():
-    lambda_locations = []
-    for (dirpath, dirnames, filenames) in os.walk(os.getcwd(), topdown=True):
-        if 'lambdas' in dirnames:
-           lambda_locations.append(dirpath + 'lambdas') 
+def get_main_yaml_vars():
+    with open(generate_location(2) + 'configs/main.yaml') as file:
+        yaml_dict = yaml.safe_load(file)
+        return yaml_dict
 
 def get_tf_module(tf_dict):
     module = tf_dict.get('module')
@@ -37,12 +37,9 @@ def is_step_function(tf_module):
 
 def get_list_of_lambda_paths():
     lambda_paths = []
-    location = generate_location(3)
-    lambdas_path = "/lambdas"
-    for (dirpath, dirnames, filenames) in os.walk(location + lambdas_path):
-        if os.path.exists(dirpath+"/index.py"):
+    for (dirpath, dirnames, filenames) in os.walk(generate_location(3) + get_main_yaml_vars()['path_to_lambdas']):
+        if os.path.exists(dirpath +"/index.py"):
             lambda_paths.append(dirpath.split("lambdas" + os.sep)[1])
-            # lambda_paths.append(dirpath.split("lambdas/")[1])
     return lambda_paths
 
 def get_dict_of_terraform_dicts():

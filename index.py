@@ -14,11 +14,11 @@ from tasks.path_parameter_task.index import PathParameterTask
 # from tasks.unit_test_task.index import UnitTestTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
 from commons.taskinterface import Warning
-from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location, get_lambdas_directory
+from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
 
 def main():
     print('\033[92m' + generate_location(3) + '\033[37m') 
-    print(get_lambdas_directory()) 
+    print(get_list_of_lambda_paths()) 
 
     tasks = [
         # ApiGatewayTask(),
