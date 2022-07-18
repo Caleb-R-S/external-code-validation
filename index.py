@@ -8,9 +8,9 @@ from tasks.glp_task.index import GLPTask
 from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
 from tasks.local_variable_task.index import LocalVarTask
 from tasks.name_length_task.index import NameLengthTask
+from tasks.path_parameter_task.index import PathParameterTask
 # from tasks.step_functions_task.index import StepFunctionsTask
 # from tasks.unit_test_task.index import UnitTestTask
-# from tasks.path_parameter_task.index import PathParameterTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
 from commons.taskinterface import Warning
 from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
@@ -29,10 +29,10 @@ def main():
         # GLPTask(), # Needs to be checked on a mac
         # LambdaInLocalFilesTask(), # Needs to be checked on a mac
         # LocalVarTask(),
-        NameLengthTask(),
+        # NameLengthTask(), # Needs to be checked on a mac
+        PathParameterTask(),
         # UnitTestTask(),
         # StepFunctionsTask(),
-        # PathParameterTask(),
         # UnusedStepFunctionPermissionsTask(),
     ]
     exceptions = []
