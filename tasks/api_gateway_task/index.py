@@ -10,6 +10,7 @@ class MissingLambdaARNException(Exception): pass
 
 class ApiGatewayTask(ValidationTask):
     def api_filter(self, terraform_module):
+        print(terraform_module)
         return terraform_module['source'] == 'app.terraform.io/ICS/apigateway-simple-rest-lambda/aws'
 
     def print_start_message(self):
