@@ -42,13 +42,16 @@ def get_list_of_lambda_paths():
 def get_dict_of_terraform_dicts():
     terraform_dicts = {}
     location = generate_location(3)
+    print(location)
+    print()
     terraform_path = '/terraform'
     for (dirpath, dirnames, filenames) in os.walk(location + terraform_path):
         for name in filenames:
             tf_filepath = os.path.join(dirpath, name)
-            if '.tf' in tf_filepath:
+            if tf_filepath.endswith('.tf'):
                 with open(tf_filepath) as file:
                     terraform_dicts[name] = hcl.load(file)
+                    print('Success for ' + name)
     return terraform_dicts
 
 
