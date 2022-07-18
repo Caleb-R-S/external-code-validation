@@ -10,11 +10,7 @@ class MissingLambdaARNException(Exception): pass
 
 class ApiGatewayTask(ValidationTask):
     def api_filter(terraform_module):
-        for value in terraform_module['module'].values():
-            if value['source'] == 'app.terraform.io/ICS/apigateway-simple-rest-lambda/aws':
-                return True
-        return False
-
+        return terraform_module['source'] == 'app.terraform.io/ICS/apigateway-simple-rest-lambda/aws'
 
     def print_start_message(self):
         print('Check that all lambda_arns are used in routes in api-gateway.tf ...')
