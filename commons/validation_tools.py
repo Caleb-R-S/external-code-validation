@@ -39,6 +39,7 @@ def is_step_function(tf_module):
 
 def get_list_of_lambda_paths():
     lambda_paths = []
+    print(get_main_yaml_vars())
     for (dirpath, dirnames, filenames) in os.walk(generate_location(3) + get_main_yaml_vars()['path_to_lambdas']):
         if os.path.exists(dirpath +"/index.py"):
             lambda_paths.append(dirpath.split("lambdas" + os.sep)[1])
