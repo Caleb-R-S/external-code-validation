@@ -18,17 +18,16 @@ class ApiGatewayTask(ValidationTask):
         print('Check that all lambda_arns are used in routes in api-gateway.tf ...')
 
     def perform_validation_task(self, dependencies):
-        lambda_paths = dependencies['lambda_paths']
-
-        lambda_arns = set()
-        lambda_arns_in_routes = set()
+        # lambda_arns = set()
+        # lambda_arns_in_routes = set()
 
         terraform_dictionaries = dependencies['terraform_dicts']
         for terraform_module in yieldNextModule(terraform_dictionaries, self.api_filter):
-                lambda_arns = set(terraform_module['lambda_arns'])
-                lambda_arns_in_routes =set([route['lambda_arn'] for route in terraform_module['routes']])
-                if lambda_arns != lambda_arns_in_routes:
-                    return list(lambda_arns - lambda_arns_in_routes) + list(lambda_arns_in_routes - lambda_arns)
+            print(terraform_module)
+            lambda_arns = set(terraform_module['lambda_arns'])
+            lambda_arns_in_routes =set([route['lambda_arn'] for route in terraform_module['routes']])
+            if lambda_arns != lambda_arns_in_routes:
+                return list(lambda_arns - lambda_arns_in_routes) + list(lambda_arns_in_routes - lambda_arns)
         # with open(f'{generate_location(3)}/terraform/api-gateway.tf') as file:
 
 
