@@ -180,9 +180,9 @@ def get_env_var_from_python_file(filepath):
 def get_code_path_to_env_vars(lambda_paths):
     dictionary = {}
     for path in lambda_paths:
-        env_vars = get_env_var_from_python_file(f'{generate_location(3)}/lambdas/{path}/index.py')
+        env_vars = get_env_var_from_python_file(f'{generate_location(3)}{path}/index.py')
         # TODO: his needs to be changed to source direct
-        dictionary[f'lambdas/{path}/index.py'] = env_vars
+        dictionary[f'{path}/index.py'] = env_vars
     return dictionary
 
 
