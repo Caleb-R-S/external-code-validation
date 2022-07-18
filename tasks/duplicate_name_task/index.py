@@ -49,6 +49,8 @@ class DuplicateNameTask(ValidationTask):
         return DuplicateNameException('Duplicate names.')
 
 def get_rules():
+    # This is the designated folder for configs files. If we ever change the validate-lambdas-in-pipelines
+    # folder name or if we decide to keep configs on a different level, this path will need to change
     with open(generate_location(2) + '/validate-lambdas-in-pipelines/configs/duplicate-names.yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict['rules']
