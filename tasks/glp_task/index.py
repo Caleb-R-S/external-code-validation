@@ -11,8 +11,7 @@ class GLPTask(ValidationTask):
         print('Finding GLP lambdas not in PR pipeline...')
 
     def check_configuration_matches(self, lambda_path, list_of_glp_configurations):
-        # This doesn't work on windows because the / is a \ in a windows file system
-        namespace, lambda_name = lambda_path.split('/')
+        namespace, lambda_name = lambda_path.split(os.sep)
         for glp_configuration in list_of_glp_configurations:
             if glp_configuration.get("namespace") == namespace and glp_configuration.get("lambdaName") == lambda_name:
                 return True

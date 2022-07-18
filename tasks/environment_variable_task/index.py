@@ -201,7 +201,7 @@ def generate_source_packages():
             with open(filename) as file:
                 terraform_dict = hcl.load(file)
                 if (env_vars := get_env_vars_from_tf(terraform_dict)) is not None:
-                    key = filename.split('/')[-1]
+                    key = filename.split(os.sep)[-1]
                     key = key.split('.')[0]
                     sub_source[key] = env_vars
         dir_name = dir.split('/')[-1]

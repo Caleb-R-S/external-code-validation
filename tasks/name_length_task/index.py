@@ -24,7 +24,7 @@ class NameLengthTask(ValidationTask):
                     if len(parts) == 2:
                         locals_entries[parts[0].strip()] = parts[1].strip().replace("\"", "")
                 for lambda_path in lambda_paths:
-                    namespace, lambda_name = lambda_path.split("/")
+                    namespace, lambda_name = lambda_path.split(os.sep)
                     (name_key, name_value) = self.generate_name_key_and_value(namespace, lambda_name)
                     entry_value = locals_entries.get(name_key)
                     if entry_value:
