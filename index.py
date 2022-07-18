@@ -15,23 +15,21 @@ from tasks.path_parameter_task.index import PathParameterTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
 from commons.taskinterface import Warning
 from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
-from commons.get_os_file_delimiter import get_os_file_delimiter
 
 def main():
-    print(get_os_file_delimiter())
     print('\033[92m' + generate_location(3) + '\033[37m') 
 
     tasks = [
         # ApiGatewayTask(),
         # CheckJsonTask(),
         # DuplicateNameTask(),
-        # EnvironmentVariableTask(), # Needs to be checked on a mac
+        EnvironmentVariableTask(), 
         # GenericStepFunctionTask(), 
-        # GLPTask(), # Needs to be checked on a mac
-        # LambdaInLocalFilesTask(), # Needs to be checked on a mac
+        # GLPTask(),
+        # LambdaInLocalFilesTask(),
         # LocalVarTask(),
-        # NameLengthTask(), # Needs to be checked on a mac
-        PathParameterTask(),
+        # NameLengthTask(),
+        # PathParameterTask(), # Almost exclusively for finance, come back if time permits
         # UnitTestTask(),
         # StepFunctionsTask(),
         # UnusedStepFunctionPermissionsTask(),
