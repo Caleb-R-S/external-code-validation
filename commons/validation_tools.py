@@ -49,7 +49,6 @@ def get_dict_of_terraform_dicts():
             if tf_filepath.endswith('.tf'):
                 with open(tf_filepath) as file:
                     terraform_dicts[name] = hcl.load(file)
-                    print('Success for ' + name)
     return terraform_dicts
 
 
