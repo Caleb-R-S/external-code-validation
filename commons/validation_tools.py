@@ -13,7 +13,8 @@ def generate_location(index):
 
 def get_lambdas_directory():
     for (dirpath, dirname, filenames) in os.walk(os.getcwd(), topdown=True):
-        print(dirname)
+        if dirname == 'lambdas':
+            print(dirpath)
 
 
 def get_tf_module(tf_dict):
