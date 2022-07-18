@@ -12,8 +12,8 @@ def generate_location(index):
     return str(Path(__file__).parents[index])
 
 def get_lambdas_directory():
-    for (dirpath, dirname, filenames) in os.walk(os.getcwd(), topdown=True):
-        if dirname == 'lambdas':
+    for (dirpath, dirnames, filenames) in os.walk(os.getcwd(), topdown=True):
+        if 'lambdas' in dirnames:
             print(dirpath)
 
 
