@@ -12,7 +12,7 @@ def generate_location(index):
     return str(Path(__file__).parents[index])
 
 def get_lambdas_directory():
-    for (root, directory, files) in os.walk(os.getcwd):
+    for (root, directory, files) in os.walk(os.getcwd()):
         print(directory)
 
 
