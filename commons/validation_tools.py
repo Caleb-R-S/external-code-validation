@@ -42,8 +42,6 @@ def get_list_of_lambda_paths():
 def get_dict_of_terraform_dicts():
     terraform_dicts = {}
     location = generate_location(3)
-    print(location)
-    print()
     terraform_path = '/terraform'
     for (dirpath, dirnames, filenames) in os.walk(location + terraform_path):
         for name in filenames:
