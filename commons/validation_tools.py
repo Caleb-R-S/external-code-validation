@@ -16,6 +16,7 @@ def get_main_yaml_vars():
     
     with open(generate_location("2") + '/validate-lambdas-in-pipeline/configs/main.yaml') as file:
         yaml_dict = yaml.safe_load(file)
+        print(yaml_dict)
         return yaml_dict
 
 def get_tf_module(tf_dict):
