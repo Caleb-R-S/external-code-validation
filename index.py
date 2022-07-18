@@ -5,7 +5,7 @@ from tasks.duplicate_name_task.index import DuplicateNameTask
 # from tasks.environment_variable_task.index import EnvironmentVariableTask
 from tasks.generic_step_function_task.index import GenericStepFunctionTask
 from tasks.glp_task.index import GLPTask
-# from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
+from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
 # from tasks.step_functions_task.index import StepFunctionsTask
 # from tasks.name_length_task.index import NameLengthTask
 # from tasks.unit_test_task.index import UnitTestTask
@@ -26,9 +26,9 @@ def main():
         # DuplicateNameTask(),
         # EnvironmentVariableTask(),
         # GenericStepFunctionTask(),
-        GLPTask(),
+        # GLPTask(),
+        LambdaInLocalFilesTask(),
         # UnitTestTask(),
-        # LambdaInLocalFilesTask(),
         # NameLengthTask(),
         # StepFunctionsTask(),
         # PathParameterTask(),
