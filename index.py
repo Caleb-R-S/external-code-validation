@@ -18,7 +18,7 @@ from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terra
 
 def main():
     print('\033[92m' + generate_location(3) + '\033[37m') 
-    get_lambdas_directory()
+    print(get_lambdas_directory()) 
 
     tasks = [
         # ApiGatewayTask(),
