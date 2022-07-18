@@ -9,13 +9,12 @@ class MissingLambdaARNException(Exception): pass
 
 
 class ApiGatewayTask(ValidationTask):
-    # Check for this url ""
     def api_filter(terraform_module):
-        if 'module' in terraform_module and 'source' in terraform_module['module']:
-            if terraform_module['source'] == 'app.terraform.io/ICS/apigateway-simple-rest-lambda/aws':
+        for value in terraform_module['module'].values():
+            if value['source'] == 'app.terraform.io/ICS/apigateway-simple-rest-lambda/aws':
                 return True
-            else:
-                return False
+        return False
+
 
     def print_start_message(self):
         print('Check that all lambda_arns are used in routes in api-gateway.tf ...')
@@ -26,14 +25,18 @@ class ApiGatewayTask(ValidationTask):
         lambda_arns = set()
         lambda_arns_in_routes = set()
 
-        # for module in yieldNextModule(dependencies['terraform_dicts'], api_filter):
-        #     module
-
+        # for terraform_module in yieldNextModule(dependencies['terraform_dicts'], api_filter):
+        #     for value in terraform_module['module'].values():
+        #         lambda_arns = set(value['lambda_arns'])
+        #         list_of_routes =set([route['lambda_arn'] for route in value['routes']])
+        #         if lambda_arns != lambda_arns_in_routes:
+        #             return list(lambda_arns - lambda_arns_in_routes) + list(lambda_arns_in_routes - lambda_arns)
         with open(f'{generate_location(3)}/terraform/api-gateway.tf') as file:
 
 
             obj = hcl.load(file)
-            print(obj)
+            for key in obj['module']:
+                print(key)
             # simple-rest-lambda is brittle, find all folders with that name
             lambda_arns = set(obj['module']['simple-rest-lambda']['lambda_arns'])
             list_of_routes = obj['module']['simple-rest-lambda']['routes']
