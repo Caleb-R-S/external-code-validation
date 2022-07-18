@@ -12,10 +12,10 @@ def generate_location(index):
     return str(Path(__file__).parents[index])
 
 def get_lambdas_directory():
+    lambda_locations = []
     for (dirpath, dirnames, filenames) in os.walk(os.getcwd(), topdown=True):
         if 'lambdas' in dirnames:
-            print(dirpath)
-
+           lambda_locations.append(dirpath + 'lambdas') 
 
 def get_tf_module(tf_dict):
     module = tf_dict.get('module')
