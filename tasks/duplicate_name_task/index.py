@@ -1,4 +1,6 @@
 import sys
+
+from requests import get
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask
@@ -54,7 +56,7 @@ def get_yaml_location():
 
 def get_rules():
     get_yaml_location()
-    with open(generate_location(2) + 'pipelines/validate-lambdas-in-pipelines/configs/duplicate-names/yml') as file:
+    with open(generate_location(2) + get_yaml_location()['location']) as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict['rules']
 
