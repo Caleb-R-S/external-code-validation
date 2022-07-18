@@ -25,7 +25,7 @@ class ApiGatewayTask(ValidationTask):
         lambda_arns = set()
         lambda_arns_in_routes = set()
 
-        for terraform_module in yieldNextModule(dependencies['terraform_dicts'], api_filter):
+        for terraform_module in yieldNextModule(dependencies['terraform_dicts'], self.api_filter):
             for value in terraform_module['module'].values():
                 lambda_arns = set(value['lambda_arns'])
                 list_of_routes =set([route['lambda_arn'] for route in value['routes']])
