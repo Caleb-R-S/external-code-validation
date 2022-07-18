@@ -38,9 +38,10 @@ def is_step_function(tf_module):
 
 def get_list_of_lambda_paths():
     lambda_paths = []
-    for (dirpath, dirnames, filenames) in os.walk(generate_location(3) + get_main_yaml_vars()['path_to_lambdas']):
+    lambda_directory = get_main_yaml_vars()['path_to_lambdas']
+    for (dirpath, dirnames, filenames) in os.walk(generate_location(3) + lambda_directory):
         if os.path.exists(dirpath +"/index.py"):
-            lambda_paths.append(dirpath.split("lambdas/")[1])
+            lambda_paths.append(lambda_directory + dirpath.split("lambdas/")[1])
     return lambda_paths
 
 def get_dict_of_terraform_dicts():
