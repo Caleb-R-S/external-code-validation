@@ -11,6 +11,11 @@ class CouldNotFindOrReadFile(Exception): pass
 def generate_location(index):
     return str(Path(__file__).parents[index])
 
+def get_lambdas_directory():
+    for (root, directory, files) in os.walk(os.getcwd):
+        print(directory)
+
+
 def get_tf_module(tf_dict):
     module = tf_dict.get('module')
     if not module:
@@ -35,7 +40,7 @@ def get_list_of_lambda_paths():
     lambdas_path = "/lambdas"
     for (dirpath, dirnames, filenames) in os.walk(location + lambdas_path):
         if os.path.exists(dirpath+"/index.py"):
-            lambda_paths.append(dirpath.split("lambdas\\")[1])
+            lambda_paths.append(dirpath.split("lambdas" + os.sep)[1])
             # lambda_paths.append(dirpath.split("lambdas/")[1])
     return lambda_paths
 
