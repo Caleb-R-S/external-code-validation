@@ -1,4 +1,5 @@
 from asyncio import tasks
+from webbrowser import get
 from tasks.api_gateway_task.index import ApiGatewayTask
 from tasks.check_json_task.index import CheckJsonTask
 from tasks.duplicate_name_task.index import DuplicateNameTask
@@ -14,10 +15,10 @@ from tasks.path_parameter_task.index import PathParameterTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
 from commons.taskinterface import Warning
 from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
-
+from commons.get_os_file_delimiter import get_os_file_delimiter
 
 def main():
-
+    print(get_os_file_delimiter())
     print('\033[92m' + generate_location(3) + '\033[37m') 
 
     tasks = [
