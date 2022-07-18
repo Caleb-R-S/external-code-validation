@@ -23,12 +23,10 @@ class ApiGatewayTask(ValidationTask):
 
         terraform_dictionaries = dependencies['terraform_dicts']
         for terraform_module in yieldNextModule(terraform_dictionaries, self.api_filter):
-            print('hello')
-            # for value in terraform_module['module'].values():
-            #     lambda_arns = set(value['lambda_arns'])
-            #     list_of_routes =set([route['lambda_arn'] for route in value['routes']])
-            #     if lambda_arns != lambda_arns_in_routes:
-            #         return list(lambda_arns - lambda_arns_in_routes) + list(lambda_arns_in_routes - lambda_arns)
+                lambda_arns = set(terraform_module['lambda_arns'])
+                lambda_arns_in_routes =set([route['lambda_arn'] for route in terraform_module['routes']])
+                if lambda_arns != lambda_arns_in_routes:
+                    return list(lambda_arns - lambda_arns_in_routes) + list(lambda_arns_in_routes - lambda_arns)
         # with open(f'{generate_location(3)}/terraform/api-gateway.tf') as file:
 
 
