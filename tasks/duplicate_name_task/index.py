@@ -48,7 +48,9 @@ class DuplicateNameTask(ValidationTask):
 
 
 def get_rules():
-    print(generate_location(1))
+    print(generate_location(0), color="#34A610")
+    print(generate_location(1), color="#34A610")
+    print(generate_location(2), color="#34A610")
     with open(generate_location(1) + '/configs/duplicate-names.yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict['rules']
