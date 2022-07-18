@@ -2,8 +2,9 @@ from asyncio import tasks
 from tasks.api_gateway_task.index import ApiGatewayTask
 from tasks.check_json_task.index import CheckJsonTask
 from tasks.duplicate_name_task.index import DuplicateNameTask
-from tasks.environment_variable_task.index import EnvironmentVariableTask
-from tasks.glp_task.index import GLPTask
+# from tasks.environment_variable_task.index import EnvironmentVariableTask
+from tasks.generic_step_function_task.index import GenericStepFunctionTask
+# from tasks.glp_task.index import GLPTask
 # from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
 # from tasks.step_functions_task.index import StepFunctionsTask
 # from tasks.name_length_task.index import NameLengthTask
@@ -11,7 +12,6 @@ from tasks.glp_task.index import GLPTask
 # from tasks.path_parameter_task.index import PathParameterTask
 # from tasks.local_variable_task.index import LocalVarTask
 # from tasks.unused_step_function_task.index import UnusedStepFunctionPermissionsTask
-# from tasks.generic_step_function_task.index import GenericStepFunctionTask
 from commons.taskinterface import Warning
 from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
 
@@ -24,7 +24,7 @@ def main():
         # ApiGatewayTask(),
         # CheckJsonTask(),
         # DuplicateNameTask(),
-        EnvironmentVariableTask(),
+        # EnvironmentVariableTask(),
         # GLPTask(),
         # UnitTestTask(),
         # LambdaInLocalFilesTask(),
@@ -33,7 +33,7 @@ def main():
         # PathParameterTask(),
         # LocalVarTask(),
         # UnusedStepFunctionPermissionsTask(),
-        # GenericStepFunctionTask(),
+        GenericStepFunctionTask(),
     ]
     exceptions = []
     warnings = []
