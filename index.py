@@ -4,7 +4,7 @@ from tasks.check_json_task.index import CheckJsonTask
 from tasks.duplicate_name_task.index import DuplicateNameTask
 # from tasks.environment_variable_task.index import EnvironmentVariableTask
 from tasks.generic_step_function_task.index import GenericStepFunctionTask
-# from tasks.glp_task.index import GLPTask
+from tasks.glp_task.index import GLPTask
 # from tasks.lambda_in_local_files_task.index import LambdaInLocalFilesTask
 # from tasks.step_functions_task.index import StepFunctionsTask
 # from tasks.name_length_task.index import NameLengthTask
@@ -25,7 +25,8 @@ def main():
         # CheckJsonTask(),
         # DuplicateNameTask(),
         # EnvironmentVariableTask(),
-        # GLPTask(),
+        # GenericStepFunctionTask(),
+        GLPTask(),
         # UnitTestTask(),
         # LambdaInLocalFilesTask(),
         # NameLengthTask(),
@@ -33,7 +34,6 @@ def main():
         # PathParameterTask(),
         # LocalVarTask(),
         # UnusedStepFunctionPermissionsTask(),
-        GenericStepFunctionTask(),
     ]
     exceptions = []
     warnings = []
