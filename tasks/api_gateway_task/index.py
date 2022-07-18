@@ -1,15 +1,21 @@
 import sys
-sys.path.append('../../commons')
-
-from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
-from commons.validation_tools import generate_location
 import hcl
+sys.path.append('../../commons')
+from commons.taskinterface import ValidationTask
+from commons.validation_tools import generate_location
+from commons.terraform_read_utility import yieldNextModule
 
 class MissingLambdaARNException(Exception): pass
 
 
 class ApiGatewayTask(ValidationTask):
-    "app.terraform.io/ICS/apigateway-simple-rest-lambda/aws"
+    # Check for this url ""
+    def api_filter(terraform_module):
+        if 'module' in terraform_module and 'source' in terraform_module['module']:
+            if terraform_module['source'] == 'app.terraform.io/ICS/apigateway-simple-rest-lambda/aws':
+                return True
+            else:
+                return False
 
     def print_start_message(self):
         print('Check that all lambda_arns are used in routes in api-gateway.tf ...')
@@ -20,8 +26,15 @@ class ApiGatewayTask(ValidationTask):
         lambda_arns = set()
         lambda_arns_in_routes = set()
 
+        # for module in yieldNextModule(dependencies['terraform_dicts'], api_filter):
+        #     module
+
         with open(f'{generate_location(3)}/terraform/api-gateway.tf') as file:
+
+
             obj = hcl.load(file)
+            print(obj)
+            # simple-rest-lambda is brittle, find all folders with that name
             lambda_arns = set(obj['module']['simple-rest-lambda']['lambda_arns'])
             list_of_routes = obj['module']['simple-rest-lambda']['routes']
             for route in list_of_routes:
@@ -45,3 +58,5 @@ class ApiGatewayTask(ValidationTask):
         print(f'Make sure these lambda_arns are in lambda_arns and routes:')
         for item in result: print(f'\t{item}')
         return MissingLambdaARNException('Routes and Lambda_arns not set up correctly in api-gateway.tf')
+
+

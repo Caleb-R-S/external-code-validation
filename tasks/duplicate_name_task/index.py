@@ -51,7 +51,7 @@ def get_rules():
     print('\033[92m' + generate_location(0) + '\033[37m')
     print('\033[92m' + generate_location(1) + '\033[37m')
     print('\033[92m' + generate_location(2) + '\033[37m')
-    with open(generate_location(1) + '/configs/duplicate-names.yml') as file:
+    with open(generate_location(2) + '/configs/duplicate-names.yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict['rules']
 

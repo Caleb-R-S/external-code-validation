@@ -21,7 +21,7 @@ def main():
     print('\033[92m' + generate_location(3) + '\033[37m') 
 
     tasks = [
-        CheckJsonTask(),
+        # CheckJsonTask(),
         # GLPTask(),
         # UnitTestTask(),
         # LambdaInLocalFilesTask(),
@@ -31,7 +31,7 @@ def main():
         ApiGatewayTask(),
         # EnvironmentVariableTask(),
         # LocalVarTask(),
-        DuplicateNameTask(),
+        # DuplicateNameTask(),
         # UnusedStepFunctionPermissionsTask(),
         # GenericStepFunctionTask(),
     ]
