@@ -12,8 +12,8 @@ def generate_location(index):
     return str(Path(__file__).parents[index])
 
 def get_lambdas_directory():
-    for (root, directory, files) in os.walk(os.getcwd()):
-        print(directory)
+    for (dirpath, dirname, filenames) in os.walk(os.getcwd(), topdown=True):
+        print(dirname)
 
 
 def get_tf_module(tf_dict):
