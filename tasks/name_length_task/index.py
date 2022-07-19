@@ -2,7 +2,7 @@ import sys
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, UnableToParseYmlException, LamdaAWSNameTooLongException
-from commons.validation_tools import generate_location
+from commons.validation_tools import generate_location, get_main_yaml_vars
 import os
 import yaml
 class NameLengthTask(ValidationTask):
