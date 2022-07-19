@@ -24,11 +24,11 @@ class LambdaInLocalFilesTask(ValidationTask):
                     split = lambda_path.split("/")
                     print(split)
                     is_namespaced = get_main_yaml_vars()['is_namespaced']
-                    if (is_namespaced):
-                        namespace = split[0]
-                        lambda_name = split[1]
-                    else:
-                        lambda_name = split[0]
+                    # if (is_namespaced):
+                        # namespace = split[0]
+                    lambda_name = split[-1]
+                    # else:
+                        # lambda_name = split[0]
                     try:
                         artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name) if is_namespaced else self.generate_artifact_path_from_name(lambda_name)
                         locals_content.index(artifact_path)
