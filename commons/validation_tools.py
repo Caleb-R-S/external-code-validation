@@ -14,7 +14,7 @@ def generate_location(index):
 
 def get_main_yaml_vars():
     
-    with open(generate_location(2) + '/validate-lambdas-in-pipelines/configs/main.yaml') as file:
+    with open(generate_location(2) + '/validate-lambdas-in-pipelines/configs/main.yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict
 
