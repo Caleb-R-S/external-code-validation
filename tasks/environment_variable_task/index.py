@@ -26,11 +26,11 @@ class EnvironmentVariableTask(ValidationTask):
 
         module_path_to_code_path = get_paths_to_lambdas_from_locals_file()
         code_path_to_env_vars = get_code_path_to_env_vars(lambda_paths)
-        # print("------------------")
-        # print(module_path_to_code_path)
-        # print("------------------")
-        # print(code_path_to_env_vars)
-        # print("------------------")
+        print("------------------")
+        print(module_path_to_code_path)
+        print("------------------")
+        print(code_path_to_env_vars)
+        print("------------------")
         module_path_to_env_vars = combine_dictionaries(module_path_to_code_path, code_path_to_env_vars)
         sources = generate_source_packages()
 
