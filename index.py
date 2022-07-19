@@ -17,8 +17,6 @@ from commons.validation_tools import global_split
 
 def main():
     
-    print('\033[33m', global_split("hello\\goodbye/adfafd"), '\033[37m')
-
     tasks = [
         ApiGatewayTask(),
         CheckJsonTask(),
