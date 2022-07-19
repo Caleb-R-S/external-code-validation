@@ -9,6 +9,9 @@ import yaml
 
 class CouldNotFindOrReadFile(Exception): pass
 
+def global_split(string):
+    return re.split("\\, /", string)
+
 def generate_location(index):
     return str(Path(__file__).parents[index])
 
