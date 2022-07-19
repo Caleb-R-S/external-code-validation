@@ -22,7 +22,7 @@ class LambdaInLocalFilesTask(ValidationTask):
                 for lambda_path in lambda_paths:
                     print(lambda_path)
                     split = lambda_path.split("/")
-                    if (get_main_yaml_vars['is_namespaced']):
+                    if (get_main_yaml_vars()['is_namespaced']):
                         namespace = split[0]
                         lambda_name = split[1]
                         try:
