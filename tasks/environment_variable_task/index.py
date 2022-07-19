@@ -26,11 +26,6 @@ class EnvironmentVariableTask(ValidationTask):
 
         module_path_to_code_path = get_paths_to_lambdas_from_locals_file()
         code_path_to_env_vars = get_code_path_to_env_vars(lambda_paths)
-        print("------------------")
-        print(module_path_to_code_path)
-        print("------------------")
-        print(code_path_to_env_vars)
-        print("------------------")
         module_path_to_env_vars = combine_dictionaries(module_path_to_code_path, code_path_to_env_vars)
         sources = generate_source_packages()
 
@@ -186,9 +181,7 @@ def get_code_path_to_env_vars(lambda_paths):
     for path in lambda_paths:
         env_vars = get_env_var_from_python_file(f'{generate_location(3)}{path}/index.py')
         path = path.removeprefix(get_main_yaml_vars()['path_to_lambdas'])
-        print(path)
         splitPath = path.split(os.sep)
-        print(splitPath)
         dictionary[f'{splitPath[-1]}/index.py'] = env_vars
     return dictionary
 

@@ -2,7 +2,7 @@ import sys
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
-from commons.validation_tools import generate_location
+from commons.validation_tools import generate_location, get_main_yaml_vars
 import yaml
 import os
 class GLPTask(ValidationTask):
@@ -20,7 +20,7 @@ class GLPTask(ValidationTask):
     def perform_validation_task(self, dependencies):
         lambda_paths = dependencies['lambda_paths']
 
-        glp_pipeline_file = generate_location(2) + "/integrations/glp-finance-create-vendor-payments.yml"
+        glp_pipeline_file = generate_location(3) + get_main_yaml_vars()['path_to_packager']
         lambdas_not_found_in_glp = []
         with open(glp_pipeline_file, "r") as stream:
             try:
