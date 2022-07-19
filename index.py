@@ -29,12 +29,12 @@ def main():
         # EnvironmentVariableTask(), 
         # GenericStepFunctionTask(), 
         # GLPTask(),
-        LambdaInLocalFilesTask(),
-        # LocalVarTask(),
+        # LambdaInLocalFilesTask(),
+        LocalVarTask(),
         # NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
-        # UnitTestTask(),
         # StepFunctionsTask(),
+        # UnitTestTask(),
         # UnusedStepFunctionPermissionsTask(),
     ]
     exceptions = []
