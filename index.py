@@ -30,8 +30,8 @@ def main():
         # GenericStepFunctionTask(), 
         # GLPTask(),
         # LambdaInLocalFilesTask(),
-        LocalVarTask(),
-        # NameLengthTask(),
+        # LocalVarTask(),
+        NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
         # StepFunctionsTask(),
         # UnitTestTask(),
