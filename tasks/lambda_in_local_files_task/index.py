@@ -46,7 +46,7 @@ class LambdaInLocalFilesTask(ValidationTask):
 
         suggested_path = []
         for lambda_not_found in result:
-            namespace, lambda_name = lambda_not_found.split(os.sep)
+            # namespace, lambda_name = lambda_not_found.split(os.sep)
             # print('\033[91m' + lambda_not_found + '\033[37m')
             is_namespaced = get_main_yaml_vars()['is_namespaced']
             lambda_name = global_split(lambda_not_found)[-1] 
