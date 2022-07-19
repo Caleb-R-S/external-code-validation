@@ -20,6 +20,7 @@ class LambdaInLocalFilesTask(ValidationTask):
             try:
                 locals_content = stream.read().replace('\n', '')
                 for lambda_path in lambda_paths:
+                    print(lambda_path)
                     split = lambda_path.split(os.sep)
                     namespace = split[0]
                     lambda_name = split[1]
@@ -44,7 +45,7 @@ class LambdaInLocalFilesTask(ValidationTask):
 
         suggested_path = []
         for lambda_not_found in result:
-            namespace, lambda_name = lambda_not_found.split('/')
+            namespace, lambda_name = lambda_not_found.split(os.sep)
             artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name)
             suggested_path.append(str(artifact_path))
 
