@@ -27,9 +27,9 @@ def main():
         # CheckJsonTask(),
         # DuplicateNameTask(),
         # EnvironmentVariableTask(), 
-        GenericStepFunctionTask(), 
+        # GenericStepFunctionTask(), 
         # GLPTask(),
-        # LambdaInLocalFilesTask(),
+        LambdaInLocalFilesTask(),
         # LocalVarTask(),
         # NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
