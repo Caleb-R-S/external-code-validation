@@ -20,7 +20,6 @@ class LambdaInLocalFilesTask(ValidationTask):
             try:
                 locals_content = stream.read().replace('\n', '')
                 for lambda_path in lambda_paths:
-                    # This will not work on a windows machine because of the /
                     split = lambda_path.split(os.sep)
                     namespace = split[0]
                     lambda_name = split[1]
