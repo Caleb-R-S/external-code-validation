@@ -1,6 +1,5 @@
 import sys
 
-from requests import get
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask
