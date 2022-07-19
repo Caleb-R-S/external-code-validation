@@ -2,7 +2,7 @@ import sys
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, UnableToParseYmlException, MissingLambdaInPipelineException
-from commons.validation_tools import generate_location
+from commons.validation_tools import generate_location, get_main_yaml_vars
 import yaml
 import os
 
@@ -22,13 +22,16 @@ class LambdaInLocalFilesTask(ValidationTask):
                 for lambda_path in lambda_paths:
                     print(lambda_path)
                     split = lambda_path.split("/")
-                    namespace = split[0]
-                    lambda_name = split[1]
-                    try:
-                        artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name)
-                        locals_content.index(artifact_path)
-                    except ValueError:
-                        lambdas_not_found_in_locals.append(lambda_path)
+                    if (get_main_yaml_vars['is_namespaced']):
+                        namespace = split[0]
+                        lambda_name = split[1]
+                        try:
+                            artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name)
+                            locals_content.index(artifact_path)
+                        except ValueError:
+                            lambdas_not_found_in_locals.append(lambda_path)
+                    else:
+                        print('success')
             except yaml.YAMLError as exc:
                 UnableToParseYmlException("Unable to parse YML")
         return lambdas_not_found_in_locals
