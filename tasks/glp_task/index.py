@@ -23,9 +23,9 @@ class GLPTask(ValidationTask):
         glp_pipeline_file = generate_location(3) + get_main_yaml_vars()['path_to_packager']
         lambdas_not_found_in_glp = []
         with open(glp_pipeline_file, "r") as stream:
-            print(stream)
             try:
                 glp_configuration = yaml.safe_load(stream)
+                print(glp_configuration)
                 list_of_glp_configurations = glp_configuration.get("parameters")[0].get("default")
                 for lambda_path in lambda_paths:
                     if not self.check_configuration_matches(lambda_path, list_of_glp_configurations):
