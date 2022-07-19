@@ -47,7 +47,7 @@ class LambdaInLocalFilesTask(ValidationTask):
         suggested_path = []
         for lambda_not_found in result:
             namespace, lambda_name = lambda_not_found.split(os.sep)
-            print('\033[91m' + lambda_not_found)
+            print('\033[91m' + lambda_not_found + '\033[37m')
             artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name)
             suggested_path.append(str(artifact_path))
 
