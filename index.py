@@ -21,7 +21,6 @@ def main():
     print('\033[92m' + generate_location(1) + '\033[37m') 
     print('\033[92m' + generate_location(2) + '\033[37m') 
     print('\033[92m' + generate_location(3) + '\033[37m') 
-    print(get_list_of_lambda_paths()) 
 
     tasks = [
         # ApiGatewayTask(),
