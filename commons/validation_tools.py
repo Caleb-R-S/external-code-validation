@@ -68,7 +68,7 @@ def get_paths_to_lambdas_from_locals_file() -> dict:
                     unparsed_path = re.search("/lambdas/(.*?).zip", value).group(1)
                     unparsed_path = unparsed_path.split('/')
                     unparsed_path.pop()
-                    path = 'lambdas/'
+                    path = get_main_yaml_vars()['path_to_lambdas']
                     for string in unparsed_path:
                         path += (string + '/')
                     path += 'index.py'
