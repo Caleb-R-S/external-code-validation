@@ -21,6 +21,7 @@ class GLPTask(ValidationTask):
         lambda_paths = dependencies['lambda_paths']
 
         glp_pipeline_file = generate_location(3) + get_main_yaml_vars()['path_to_packager']
+        print(glp_pipeline_file)
         lambdas_not_found_in_glp = []
         with open(glp_pipeline_file, "r") as stream:
             try:
