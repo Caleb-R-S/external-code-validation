@@ -2,7 +2,7 @@ import sys
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, UnableToParseYmlException, MissingLambdaInPipelineException
-from commons.validation_tools import generate_location, get_main_yaml_vars
+from commons.validation_tools import generate_location, get_main_yaml_vars, global_split
 import yaml
 import os
 
@@ -46,10 +46,14 @@ class LambdaInLocalFilesTask(ValidationTask):
 
         suggested_path = []
         for lambda_not_found in result:
-            # namespace, lambda_name = lambda_not_found.split(os.sep)
+            namespace, lambda_name = lambda_not_found.split(os.sep)
             # print('\033[91m' + lambda_not_found + '\033[37m')
-            
-            artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name)
+            is_namespaced = get_main_yaml_vars()['is_namespaced']
+            lambda_name = global_split(lambda_not_found)[-1] 
+            if is_namespaced:
+                namespace = global_split(lambda_not_found[-2])
+
+            artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name) if is_namespaced else self.generate_artifact_path_from_name(lambda_name)
             suggested_path.append(str(artifact_path))
 
         print('\tLambdas were missing from the pipelines and/or locals file.')
