@@ -1,5 +1,3 @@
-from asyncio import tasks
-from webbrowser import get
 from tasks.api_gateway_task.index import ApiGatewayTask
 from tasks.check_json_task.index import CheckJsonTask
 from tasks.duplicate_name_task.index import DuplicateNameTask
@@ -33,8 +31,8 @@ def main():
         # LocalVarTask(),
         # NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
-        StepFunctionsTask(),
-        # UnitTestTask(),
+        # StepFunctionsTask(),
+        UnitTestTask(),
         # UnusedStepFunctionPermissionsTask(),
     ]
     exceptions = []
