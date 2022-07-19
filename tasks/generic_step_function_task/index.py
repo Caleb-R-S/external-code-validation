@@ -4,7 +4,6 @@ sys.path.append('../../commons')
 from commons.taskinterface import ValidationTask, Warning
 from commons.validation_tools import StepFunction
 import re 
-
 class UnusedPermissions(Warning): pass
 
 class GenericStepFunctionTask(ValidationTask):
