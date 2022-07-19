@@ -2,8 +2,7 @@ import sys
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
-from commons.validation_tools import get_paths_to_lambdas_from_locals_file
-from commons.validation_tools import generate_location
+from commons.validation_tools import get_paths_to_lambdas_from_locals_file, generate_location, get_main_yaml_vars
 import re
 import os
 import hcl
@@ -186,8 +185,9 @@ def get_code_path_to_env_vars(lambda_paths):
     dictionary = {}
     for path in lambda_paths:
         env_vars = get_env_var_from_python_file(f'{generate_location(3)}{path}/index.py')
-        print(path)
-        dictionary[f'{path}/index.py'] = env_vars
+        path = path.strip(get_main_yaml_vars()['path_to_lambdas'])
+        splitPath = path.split(os.sep)
+        dictionary[f'{splitPath[-1]}/index.py'] = env_vars
     return dictionary
 
 
