@@ -186,7 +186,9 @@ def get_code_path_to_env_vars(lambda_paths):
     for path in lambda_paths:
         env_vars = get_env_var_from_python_file(f'{generate_location(3)}{path}/index.py')
         path = path.strip(get_main_yaml_vars()['path_to_lambdas'])
+        print(path)
         splitPath = path.split(os.sep)
+        print(splitPath)
         dictionary[f'{splitPath[-1]}/index.py'] = env_vars
     return dictionary
 
