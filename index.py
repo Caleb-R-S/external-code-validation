@@ -21,18 +21,18 @@ def main():
     print('\033[92m' + generate_location(3) + '\033[37m') 
 
     tasks = [
-        # ApiGatewayTask(),
-        # CheckJsonTask(),
-        # DuplicateNameTask(),
-        # EnvironmentVariableTask(), 
-        # GenericStepFunctionTask(), 
+        ApiGatewayTask(),
+        CheckJsonTask(),
+        DuplicateNameTask(),
+        EnvironmentVariableTask(), 
+        GenericStepFunctionTask(), 
         # GLPTask(),
-        # LambdaInLocalFilesTask(),
-        # LocalVarTask(),
+        LambdaInLocalFilesTask(),
+        LocalVarTask(),
         # NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
-        # StepFunctionsTask(),
-        # UnitTestTask(),
+        StepFunctionsTask(),
+        UnitTestTask(),
         UnusedStepFunctionPermissionsTask(),
     ]
     exceptions = []
