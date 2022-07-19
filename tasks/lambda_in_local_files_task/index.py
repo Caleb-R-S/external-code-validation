@@ -20,7 +20,6 @@ class LambdaInLocalFilesTask(ValidationTask):
             try:
                 locals_content = stream.read().replace('\n', '')
                 for lambda_path in lambda_paths:
-                    print(lambda_path)
                     split = lambda_path.split("/")
                     is_namespaced = get_main_yaml_vars()['is_namespaced']
                     if (is_namespaced):

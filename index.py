@@ -15,11 +15,6 @@ from commons.taskinterface import Warning
 from commons.validation_tools import get_list_of_lambda_paths, get_dict_of_terraform_dicts, generate_location
 
 def main():
-    print('\033[92m' + generate_location(0) + '\033[37m') 
-    print('\033[92m' + generate_location(1) + '\033[37m') 
-    print('\033[92m' + generate_location(2) + '\033[37m') 
-    print('\033[92m' + generate_location(3) + '\033[37m') 
-
     tasks = [
         ApiGatewayTask(),
         CheckJsonTask(),
