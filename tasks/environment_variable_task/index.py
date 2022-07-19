@@ -25,7 +25,6 @@ class EnvironmentVariableTask(ValidationTask):
         failed_lambdas = []
 
 
-        # What is the difference between the following function and the lambda_paths?
         module_path_to_code_path = get_paths_to_lambdas_from_locals_file()
         code_path_to_env_vars = get_code_path_to_env_vars(lambda_paths)
         print("------------------")
