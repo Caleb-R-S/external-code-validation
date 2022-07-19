@@ -22,16 +22,18 @@ class LambdaInLocalFilesTask(ValidationTask):
                 for lambda_path in lambda_paths:
                     print(lambda_path)
                     split = lambda_path.split("/")
-                    if (get_main_yaml_vars()['is_namespaced']):
+                    print(split)
+                    is_namespaced = get_main_yaml_vars()['is_namespaced']
+                    if (is_namespaced):
                         namespace = split[0]
                         lambda_name = split[1]
-                        try:
-                            artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name)
-                            locals_content.index(artifact_path)
-                        except ValueError:
-                            lambdas_not_found_in_locals.append(lambda_path)
                     else:
-                        print('success')
+                        lambda_name = split[0]
+                    try:
+                        artifact_path = self.generate_artifact_path_from_namespace_and_name(namespace, lambda_name) if is_namespaced else self.generate_artifact_path_from_name(lambda_name)
+                        locals_content.index(artifact_path)
+                    except ValueError:
+                        lambdas_not_found_in_locals.append(lambda_path)
             except yaml.YAMLError as exc:
                 UnableToParseYmlException("Unable to parse YML")
         return lambdas_not_found_in_locals
@@ -64,3 +66,6 @@ class LambdaInLocalFilesTask(ValidationTask):
 
     def generate_artifact_path_from_namespace_and_name(self, namespace, name):
         return "../src/artifacts/" + namespace + "_"+name+"_drop/lambdas/"+ namespace +"/"+ name +"/"+name+".zip"
+
+    def generate_artifact_path_from_name(self, name):
+        return "../src/artifacts/"+name+"_drop/lambdas/" + name +"/"+name+".zip"

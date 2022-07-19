@@ -23,13 +23,13 @@ def main():
     print('\033[92m' + generate_location(3) + '\033[37m') 
 
     tasks = [
-        ApiGatewayTask(),
+        # ApiGatewayTask(),
         # CheckJsonTask(),
         # DuplicateNameTask(),
         # EnvironmentVariableTask(), 
         # GenericStepFunctionTask(), 
         # GLPTask(),
-        # LambdaInLocalFilesTask(),
+        LambdaInLocalFilesTask(),
         # LocalVarTask(),
         # NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
