@@ -32,8 +32,8 @@ def main():
         # NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
         # StepFunctionsTask(),
-        UnitTestTask(),
-        # UnusedStepFunctionPermissionsTask(),
+        # UnitTestTask(),
+        UnusedStepFunctionPermissionsTask(),
     ]
     exceptions = []
     warnings = []
