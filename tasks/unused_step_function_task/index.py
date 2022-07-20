@@ -9,7 +9,7 @@ class UnusedPermissions(Warning): pass
 class UnusedStepFunctionPermissionsTask(ValidationTask):
 
     def print_start_message(self):
-        print('Checking if step functions can invoke lambdas defined in their JSON...')
+        print('Checking if step functions have unused permissions...')
 
     def perform_validation_task(self, dependencies):
         terraform_dictionaries = dependencies['terraform_dicts']
