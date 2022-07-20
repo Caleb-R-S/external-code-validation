@@ -2,7 +2,7 @@ import sys
 sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, UnableToParseYmlException, LamdaAWSNameTooLongException
-from commons.validation_tools import generate_location, get_main_yaml_vars
+from commons.validation_tools import generate_location, global_split, get_main_yaml_vars
 import os
 import yaml
 class NameLengthTask(ValidationTask):
@@ -25,11 +25,15 @@ class NameLengthTask(ValidationTask):
                     if len(parts) == 2:
                         locals_entries[parts[0].strip()] = parts[1].strip().replace("\"", "")
                 for lambda_path in lambda_paths:
-                    namespace, lambda_name = lambda_path.split(os.sep)
-                    (name_key, name_value) = self.generate_name_key_and_value(namespace, lambda_name)
+                    # namespace, lambda_name = global_split(lambda_path) 
+                    lambda_name = global_split(lambda_path)
+                    
+                    name_key = self.generate_name_key(lambda_name)
                     entry_value = locals_entries.get(name_key)
                     if entry_value:
-                        length_result = len(entry_value.replace("${var.ENV}", "123") + "-exec")
+                        # The "123" represents 3 characters that the Church uses to replacer environment variables
+                        # -exec-us-east-1
+                        length_result = len(entry_value.replace("${var.ENV}", "123") + get_main_yaml_vars()['longest_suffix'])
                         if length_result > name_length_max:
                             entry_too_long.append((lambda_path, length_result-name_length_max))
             except yaml.YAMLError as exc:
@@ -51,8 +55,5 @@ class NameLengthTask(ValidationTask):
         for name, count in result: print(f'\t{name} is {count} chars too long.')
         return LamdaAWSNameTooLongException('Lambdas names are too long.')
 
-    def generate_name_key_and_value(self, namespace, name):
-        namespace_value = namespace if namespace == "api" else "stepFunctionStates"
-        name_key = name.replace("-", "_") + "_lambda_name"
-        name_value = "finance-" + namespace_value + "-" + name + "-${var.ENV}"
-        return (name_key, name_value)
+    def generate_name_key(self, name):
+        return name.replace("-", "_") + "_lambda_name"
