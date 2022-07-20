@@ -26,7 +26,7 @@ def main():
         # GLPTask(),
         LambdaInLocalFilesTask(),
         LocalVarTask(),
-        # NameLengthTask(),
+        NameLengthTask(),
         # PathParameterTask(), # Almost exclusively for finance, come back if time permits
         StepFunctionsTask(),
         UnitTestTask(),

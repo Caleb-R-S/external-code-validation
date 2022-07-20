@@ -1,29 +1,20 @@
-parameters:
-  - name: lambdaFolderNames
-    type: object
-    default:
-      - "get-mission-reports-for-week"
+trigger:
+- main
 
-stages:
-  - stage: ValidationPipeline
-    displayName: Validation_Pipeline
-    pool:
-      vmImage: ubuntu-latest
-    jobs:
-      - job: Run_Python_Scripts
-        workspace:
-          clean: outputs | resources | all # what to clean up before the job runs
-        pool:
-          name: 'Private Linux'
-          demands: 'python3'
-        steps:
-          - task: UsePythonVersion@0
-            inputs:
-              versionSpec: '3.8'
-              addToPath: true
-              architecture: 'x64'
-          - script: |
-              pip3 install -U pip setuptools
-              pip3 install -r ./pipelines/validate-lambdas-in-pipelines/requirements.txt
-              python3 ./pipelines/validate-lambdas-in-pipelines/validate.py
-            displayName: 'Running Tests'
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.10'
+    addToPath: true
+    architecture: 'x64'
+- script: |
+    cd s
+    git clone https://github.com/Caleb-R-S/external-code-validation.git pipelines/external-code-validation
+  displayName: 'Clone External Code Validation Tools'
+- script: |
+    pip install -r pipelines/external-code-validation/requirements.txt
+    python pipelines/external-code-validation/index.py
+  displayName: 'Run External Code Validation'
