@@ -1,9 +1,5 @@
-import sys
-sys.path.append('../../commons')
-
 from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException
-from commons.validation_tools import generate_location
-import os
+from commons.validation_tools import generate_location, get_main_yaml_vars, global_split
 class UnitTestTask(ValidationTask):
 
     def print_start_message(self):
@@ -14,9 +10,12 @@ class UnitTestTask(ValidationTask):
 
         lambdas_not_found_in_pipeline = []
         unit_test_pipeline_file = generate_location(2) + "/unit-tests/pr.yml"
+        prefix = get_main_yaml_vars()['path_to_lambdas']
         with open(unit_test_pipeline_file, "r") as file:
             data = file.read().replace('\n', '')
             for lambda_path in lambda_paths:
+                lambda_path = lambda_path.removeprefix(prefix)
+                lambda_path = '/'.join(global_split(lambda_path))
                 try:
                     data.index(lambda_path)
                 except ValueError:

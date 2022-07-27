@@ -1,9 +1,6 @@
-import sys
-sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, UnableToParseYmlException, LamdaAWSNameTooLongException
 from commons.validation_tools import generate_location, global_split, get_main_yaml_vars
-import os
 import yaml
 class NameLengthTask(ValidationTask):
 
@@ -30,7 +27,7 @@ class NameLengthTask(ValidationTask):
                     entry_value = locals_entries.get(name_key)
                     if entry_value:
                         # The "123" represents 3 characters that the Church uses to replacer environment variables
-                        # -exec-us-east-1
+                        # -exec-us-east-1 is usually the longest suffix
                         length_result = len(entry_value.replace("${var.ENV}", "123") + get_main_yaml_vars()['longest_suffix'])
                         if length_result > name_length_max:
                             entry_too_long.append((lambda_path, length_result-name_length_max))

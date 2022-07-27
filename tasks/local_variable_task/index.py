@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
 from commons.validation_tools import generate_location
@@ -42,7 +40,7 @@ class LocalVarTask(ValidationTask):
 
 def get_local_vars():
     local_vars = set()
-    with open(f'{generate_location(3)}/terraform/locals.tf') as file:
+    with open(f'{generate_location(3)}/terraform/locals.tf', encoding='utf8') as file:
         lines = file.readlines()
         for line in lines:
             if len((split_line := line.split('='))) > 1:
@@ -63,7 +61,7 @@ def get_all_local_vars_use_in_tf():
 
 def get_local_vars_from_tf(tf_filepath):
     local_vars = set()
-    with open(tf_filepath) as file:
+    with open(tf_filepath, encoding='utf-8', errors='ignore') as file:
         lines = file.readlines()
         for line in lines:
             if len((split_line := line.split('='))) > 1:

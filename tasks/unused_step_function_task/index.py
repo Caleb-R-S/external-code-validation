@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../../commons')
-
 from commons.taskinterface import ValidationTask, Warning
 from commons.validation_tools import StepFunction, get_tf_module, is_step_function
 

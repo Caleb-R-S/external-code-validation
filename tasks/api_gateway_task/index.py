@@ -1,6 +1,4 @@
-import sys
 import hcl
-sys.path.append('../../commons')
 from commons.taskinterface import ValidationTask
 from commons.validation_tools import generate_location
 from commons.terraform_read_utility import yieldNextModule

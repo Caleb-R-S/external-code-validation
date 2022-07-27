@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
 from commons.validation_tools import get_paths_to_lambdas_from_locals_file, generate_location, get_main_yaml_vars
@@ -7,7 +5,6 @@ import re
 import os
 import hcl
 import glob
-import yaml
 
 
 class IncorrectlyConfiguredEnvironmentVariables(Exception): pass

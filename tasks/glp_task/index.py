@@ -1,20 +1,24 @@
-import sys
-sys.path.append('../../commons')
 
 from commons.taskinterface import ValidationTask, MissingLambdaInPipelineException, LamdaAWSNameTooLongException, UnableToParseYmlException
-from commons.validation_tools import generate_location, get_main_yaml_vars
+from commons.validation_tools import generate_location, get_main_yaml_vars, global_split
 import yaml
-import os
 class GLPTask(ValidationTask):
 
     def print_start_message(self):
         print('Finding GLP lambdas not in PR pipeline...')
 
     def check_configuration_matches(self, lambda_path, list_of_glp_configurations):
-        namespace, lambda_name = lambda_path.split(os.sep)
-        for glp_configuration in list_of_glp_configurations:
-            if glp_configuration.get("namespace") == namespace and glp_configuration.get("lambdaName") == lambda_name:
-                return True
+        is_namespaced = get_main_yaml_vars()['is_namespaced']
+        if is_namespaced:
+            namespace, lambda_name = global_split(lambda_path)[-2], global_split(lambda_path)[-1]
+            for glp_configuration in list_of_glp_configurations:
+                if glp_configuration.get("namespace") == namespace and glp_configuration.get("lambdaName") == lambda_name:
+                    return True
+        else:
+            lambda_name = global_split(lambda_path)[-1]
+            for glp_configuration in list_of_glp_configurations:
+                if glp_configuration.get("lambdaName") == lambda_name:
+                    return True
         return False
 
     def perform_validation_task(self, dependencies):
@@ -25,7 +29,6 @@ class GLPTask(ValidationTask):
         with open(glp_pipeline_file, "r") as stream:
             try:
                 glp_configuration = yaml.safe_load(stream)
-                print(glp_configuration)
                 list_of_glp_configurations = glp_configuration.get("parameters")[0].get("default")
                 for lambda_path in lambda_paths:
                     if not self.check_configuration_matches(lambda_path, list_of_glp_configurations):

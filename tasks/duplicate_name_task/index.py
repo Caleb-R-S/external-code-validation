@@ -1,12 +1,6 @@
-import sys
-
-sys.path.append('../../commons')
-
 from commons.taskinterface import ValidationTask
 from commons.validation_tools import generate_location
-import os
 import yaml
-import hcl
 
 class DuplicateNameException(Exception): pass
 
@@ -48,9 +42,9 @@ class DuplicateNameTask(ValidationTask):
         return DuplicateNameException('Duplicate names.')
 
 def get_rules():
-    # This is the designated folder for configs files. If we ever change the validate-lambdas-in-pipelines
+    # This is the designated folder for configs files. If we ever change the validate-code
     # folder name or if we decide to keep configs on a different level, this path will need to change
-    with open(generate_location(2) + '/validate-lambdas-in-pipelines/configs/duplicate-names.yml') as file:
+    with open(generate_location(2) + '/validate-code/configs/duplicate-names.yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict['rules']
 

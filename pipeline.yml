@@ -5,6 +5,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: InstallSSHKey@0
+  inputs:
+   knownHostsEntry: LDS+CRSyndergaard@WF-2797268
+   sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDeSt2aw+QtFQvCCuau21sI4EHON44RYMTw+0SQzXly4i9cwzTBwlD/7K634Ctb248JFrOXNEHjgNNo11If4ivlTBiFMRlbNb1j6EgpTmi7S+iWjMjyBIJjR4+Ss1I+2dbqVnAFHlTHULb8zoL5rDPPCvfV1DlYe/KLehp0cg81VwKNkxoEFQttPCrX2tKdiVZ9D/unL5yCZ8JiQ3leH9bgz54rmpblBpuzbeddwDOZAD86j0yr1HG+kUaNm80PKgVDDGgi6NdB5AYXCtv/dtGCV8yNPVjG60QoMgJKVominP74U/p/VZFX3tcoGAqTwy9q7Nt4izW0SJRKfYPLe4bcrcKS5UWMlp+p/7X00sf2p7jieFe8qvKqUh8/K5gIXOVGgvvwKXO589tRQegJrb++avetGF4+TeEzALf+216A/oRmCUP22rNm07D1EPVQ8BoSCzKuDL2BP6MhajnhNuMTf9T6WfkGAgvHMbOwrh8+Do3YIt61cB+zm9IwcO4ang0=
+   sshKeySecureFile: external-code-validation-pipeline-key
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.10'
@@ -12,7 +17,7 @@ steps:
     architecture: 'x64'
 - script: |
     cd s
-    git clone https://github.com/Caleb-R-S/external-code-validation.git pipelines/external-code-validation
+    git clone git@github.com:ICSEng/external-code-validation.git pipelines/external-code-validation
   displayName: 'Clone External Code Validation Tools'
 - script: |
     pip install -r pipelines/external-code-validation/requirements.txt

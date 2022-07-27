@@ -17,7 +17,7 @@ def generate_location(index):
 
 def get_main_yaml_vars():
     
-    with open(generate_location(2) + '/validate-lambdas-in-pipelines/configs/main.yml') as file:
+    with open(generate_location(2) + '/validate-code/configs/main.yml') as file:
         yaml_dict = yaml.safe_load(file)
         return yaml_dict
 
@@ -47,17 +47,31 @@ def get_list_of_lambda_paths():
             lambda_paths.append(lambda_directory + dirpath.split("lambdas/")[1])
     return lambda_paths
 
+def get_terraform_from_sub_module(file_path):
+    pass
+
 def get_dict_of_terraform_dicts():
     terraform_dicts = {}
+    terraform_dicts_with_path = {}
     location = generate_location(3)
     terraform_path = '/terraform'
     for (dirpath, dirnames, filenames) in os.walk(location + terraform_path):
+        #
+        # terraform/
+        #   > api_stuff
+        #       get_lambdas.tf
+        #           this_module
+        #   get_lambdas.tf
+        #           this_module
+        #
         for name in filenames:
             tf_filepath = os.path.join(dirpath, name)
             if tf_filepath.endswith('.tf'):
                 with open(tf_filepath) as file:
-                    terraform_dicts[name] = hcl.load(file)
-    return terraform_dicts
+                    result = hcl.load(file)
+                    terraform_dicts[name] = result
+                    terraform_dicts_with_path[tf_filepath] = result
+    return terraform_dicts, terraform_dicts_with_path
 
 
 def get_paths_to_lambdas_from_locals_file() -> dict:
